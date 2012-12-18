@@ -106,9 +106,18 @@ class Image
 		switch ($method)
 		{
 			case self::RESIZE_FIXED_HEIGHT:
-				break;
+			{
+				$r = $image_h / $h;
+				$final_w = round($image_w / $r);
+			}
+			break;
+
 			case self::RESIZE_FIXED_WIDTH:
-				break;
+			{
+				$r = $image_w / $w;
+				$final_h = round($image_h / $r);
+			}
+			break;
 
 			case self::RESIZE_SURFACE:
 			{
@@ -128,7 +137,6 @@ class Image
 
 				$final_w = round($image_w / $r);
 				$final_h = round($image_h / $r);
-
 			}
 			break;
 		}
