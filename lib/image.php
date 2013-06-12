@@ -145,6 +145,70 @@ class Image
 	}
 
 	/**
+	 * Asserts that the specified width and height can be used with the specified resize method.
+	 *
+	 * @param string $m The resize method.
+	 * @param int $w The destination width.
+	 * @param int $h The destination height.
+	 *
+	 * @throws \InvalidArgumentException if the width or height is invalid for the resize method.
+	 *
+	 * @return boolean
+	 */
+	static public function assert_sizes($m, $w, $h)
+	{
+		switch ($m)
+		{
+			case Image::RESIZE_FIXED_WIDTH:
+			{
+				if (!$w)
+				{
+					throw new \InvalidArgumentException
+					(
+						\ICanBoogie\format('Width is required for the %method resize method.', array
+						(
+							'method' => $m
+						))
+					);
+				}
+			}
+			break;
+
+			case Image::RESIZE_FIXED_HEIGHT:
+			{
+				if (!$h)
+				{
+					throw new \InvalidArgumentException
+					(
+						\ICanBoogie\format('Height is required for the %method resize method.', array
+						(
+							'method' => $m
+						))
+					);
+				}
+			}
+			break;
+
+			default:
+			{
+				if (!$w || !$h)
+				{
+					throw new \InvalidArgumentException
+					(
+						\ICanBoogie\format('Both width and height are required for the %method resize method.', array
+						(
+							'method' => $m
+						))
+					);
+				}
+			}
+			break;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Resize a source image and return its resized version.
 	 *
 	 * @param resource $source The source image.
