@@ -540,7 +540,7 @@ class Image
 		'purple' => array(0xffffff, 0xdcccf8)
 	);
 
-	static public function draw_grid($image, $x1, $y1, $x2, $y2, $color1=0xFFFFFF, $color2=0xCCCCCC, $size=4)
+	static public function draw_grid($image, $x1, $y1, $x2, $y2, $color1=0xFFFFFF, $color2=0xCCCCCC, $size=8)
 	{
 		#
 		# resolve size
@@ -633,32 +633,30 @@ class Image
 
 		if (is_string($color))
 		{
-			if ($color[0] == '#')
+			if ($color{0} == '#')
 			{
-				switch (strlen($color))
-				{
-					case 4:
-					{
-						return array
-						(
-							intval($color[1] . $color[1], 16),
-							intval($color[2] . $color[2], 16),
-							intval($color[3] . $color[3], 16)
-						);
-					}
-					break;
+				$color = substr($color, 1);
+			}
 
-					case 7:
-					{
-						return array
-						(
-							intval($color[1] . $color[2], 16),
-							intval($color[3] . $color[4], 16),
-							intval($color[5] . $color[6], 16)
-						);
-					}
-					break;
-				}
+			switch (strlen($color))
+			{
+				case 3:
+				
+					return array
+					(
+						intval($color{0} . $color{0}, 16),
+						intval($color{1} . $color{1}, 16),
+						intval($color{2} . $color{2}, 16)
+					);
+				
+				case 6:
+				
+					return array
+					(
+						intval($color{0} . $color{1}, 16),
+						intval($color{2} . $color{3}, 16),
+						intval($color{4} . $color{5}, 16)
+					);
 			}
 
 			// TODO-20090418: add support for rgb()
@@ -682,10 +680,7 @@ class Image
 	{
 		$color = self::decode_color($color);
 
-		return imagecolorallocate
-		(
-			$image, $color[0], $color[1], $color[2]
-		);
+		return imagecolorallocate($image, $color[0], $color[1], $color[2]);
 	}
 
 	static public $color_names = array
