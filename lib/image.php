@@ -338,13 +338,13 @@ class Image
 
 				$d_w = round($s_w / $r);
 
-				if ($s_w > $s_h)
+				if ($s_h > $s_w)
 				{
-					$d_h = round($s_h / $r);
+					$t_w = $d_w;
 				}
 				else
 				{
-					$t_w = $d_w;
+					$d_h = round($s_h / $r);
 				}
 
 				#
