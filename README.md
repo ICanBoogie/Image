@@ -6,9 +6,15 @@ The Image package provides support for images and colors.
 
 
 
+----------
+
+
+
+
+
 ## Requirements
 
-The package requires PHP 5.2 or later.
+The package requires PHP 5.3 or later.
 
 
 
@@ -16,16 +22,10 @@ The package requires PHP 5.2 or later.
 
 ## Installation
 
-The recommended way to install this package is through [composer](http://getcomposer.org/).
-Create a `composer.json` file and run `php composer.phar install` command to install it:
+The recommended way to install this package is through [Composer](http://getcomposer.org/):
 
-```json
-{
-    "minimum-stability": "dev",
-    "require": {
-		"icanboogie/image": "1.0.*"
-    }
-}
+```
+$ composer require icanboogie/image
 ```
 
 
@@ -37,7 +37,7 @@ Create a `composer.json` file and run `php composer.phar install` command to ins
 The package is [available on GitHub](https://github.com/ICanBoogie/Image), its repository can be
 cloned with the following command line:
 
-	$ git clone git://github.com/ICanBoogie/Image.git
+	$ git clone https://github.com/ICanBoogie/Image.git
 
 
 
@@ -67,4 +67,4 @@ clean the directory with the `make clean` command.
 
 ## License
 
-ICanBoogie/Image is licensed under the New BSD License - See the LICENSE file for details.
+ICanBoogie/Image is licensed under the New BSD License - See the [LICENSE](LICENSE) file for details.
